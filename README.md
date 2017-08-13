@@ -1,3 +1,6 @@
+# Note: This was most likely testing a bug in SGI's "MPT" MPI implementation
+This code was created to test the time required to coarray allocations with varying numbers of images (processors). The problems noted below are most likely attributable instead to SGI's MPI implementation, in particular `MPI_Win_allocate`. The rest of this is left for posterity, but recognize that the slow down reported is not due to opencoarrays, but rather to a poorly performing MPI library. 
+
 # Test allocation timing for Coarray Fortran
 Coarray Fortran using gfortran and opencoarrays can take a long time to allocate coarrays on large numbers of nodes.  This repository serves as a test case for timing allocations.  In particular, one simulation to test the scaling characteristics of an [experimental coarray version](https://github.com/gutmann/coarray_icar) of [ICAR](https://github.com/NCAR/icar) on nearly 10,000 cores was unable to even finish initializing the model after 10 hours.  Previous timing tests had indicated that allocating the arrays took longer on more nodes, so this test case was developed to understand the problem.
 
